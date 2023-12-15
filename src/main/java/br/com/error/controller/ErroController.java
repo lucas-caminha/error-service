@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,11 +63,13 @@ public class ErroController {
 	}
 	
 	@RequestMapping(
-			value = "/find",
+			value = "/find/{cdErro}",
 			method = RequestMethod.GET,
 			produces = { "application/json", "application/xml"}  
 	)
-	public ResponseEntity<ErrorDTO> findErro(@RequestBody FindErroDTO dto) {
-		return new ResponseEntity<ErrorDTO>(erroService.find(dto), HttpStatus.OK);
+	public ResponseEntity<ErrorDTO> findErro(@PathVariable Integer cdErro) {
+		FindErroDTO find = new FindErroDTO();
+		find.setCdErro(cdErro);
+		return new ResponseEntity<ErrorDTO>(erroService.find(find), HttpStatus.OK);
 	}
 }

@@ -2,9 +2,16 @@ package br.com.error.dto.sistema;
 
 public class SistemaDTO {
 	
+	private Integer cdSistema;
 	private String sgSistema;
 	private String deSistema;
 	
+	public Integer getCdSistema() {
+		return cdSistema;
+	}
+	public void setCdSistema(Integer cdSistema) {
+		this.cdSistema = cdSistema;
+	}
 	public String getSgSistema() {
 		return sgSistema;
 	}
